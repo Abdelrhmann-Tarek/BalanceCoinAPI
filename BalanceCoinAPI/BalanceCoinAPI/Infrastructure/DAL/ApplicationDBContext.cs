@@ -6,21 +6,24 @@ namespace BalanceCoinAPI.Infrastructure.DAL
     {
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext>options)
             
-            : base(options) { 
-        
-        
-        }
+            : base(options) {}
         //public DbSet<Income>  Incomes { get; set; }
         public DbSet<BalanceCoinAPI.Expence> Expences { get; set; }
-        public DbSet<BalanceCoinAPI.Transaction> Transactions { get; set; }
-        public DbSet<BalanceCoinAPI.Balance> Balances { get; set; }
-        public DbSet<BalanceCoinAPI.Category> Categories { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<Balance> Balances { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Balance>().HasKey(b => b.Id);
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Category>().HasData(
+                new Category { Id = 1, Name = "Food" },
+                new Category { Id = 2, Name = "Transport" },
+                new Category { Id = 3, Name = "Salary" }
+            );
         }
+
 
     }
 }

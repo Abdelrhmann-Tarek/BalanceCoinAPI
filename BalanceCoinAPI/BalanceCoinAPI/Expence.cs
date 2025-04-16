@@ -4,10 +4,9 @@ namespace BalanceCoinAPI
 {
     public class Expence
     {
-        [Key]
+        //[Key]
         public int Id { get; set; }
 
-        
 
         // Add other properties based on your design
     }
