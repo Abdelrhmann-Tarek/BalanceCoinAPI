@@ -1,4 +1,4 @@
-﻿/*using BalanceCoinAPI.Application.Services;
+﻿using BalanceCoinAPI.Application.Services;
 using BalanceCoinAPI.DTO;
 using BalanceCoinAPI.DTOs;
 using BalanceCoinAPI.Infrastructure.DAL;
@@ -82,4 +82,3 @@ namespace BalanceCoinAPI.Services
         }
     }
 }
-*/
