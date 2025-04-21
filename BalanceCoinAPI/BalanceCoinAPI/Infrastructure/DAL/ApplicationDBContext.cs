@@ -20,6 +20,12 @@ namespace BalanceCoinAPI.Infrastructure.DAL
                 new Category { Id = 2, Name = "Transport" },
                 new Category { Id = 3, Name = "Salary" }
             );
+             modelBuilder.Entity<Income>()
+              .HasOne(i => i.Category)
+               .WithMany()
+                .HasForeignKey(i => i.CategoryId); // ask chatgpt 1254
+
+
         }
 
 
