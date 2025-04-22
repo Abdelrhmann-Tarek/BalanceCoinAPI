@@ -1,14 +1,13 @@
 ﻿using BalanceCoinAPI.Application.Services;
-//using BalanceCoinAPI.DTO;
 using BalanceCoinAPI.DTOs;
 using BalanceCoinAPI.Infrastructure.DAL;
 using Microsoft.EntityFrameworkCore;
 
-namespace BalanceCoinAPI.Services
+namespace BalanceCoinAPI.Application.Services
 {
     public class CategoryService : ICategoryService
     {
-        private readonly ApplicationDBContext _context;
+        private readonly ApplicationDBContext _context; 
 
         public CategoryService(ApplicationDBContext context)
         {
