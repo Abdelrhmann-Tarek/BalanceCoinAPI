@@ -15,7 +15,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddScoped<ICategoryService, CategoryService>();//Regiester service in Program.cs
+builder.Services.AddScoped<ICategoryService, CategoryService>();//Dependency injection
 builder.Services.AddScoped<IIncomeService, IncomeService>();
 
 

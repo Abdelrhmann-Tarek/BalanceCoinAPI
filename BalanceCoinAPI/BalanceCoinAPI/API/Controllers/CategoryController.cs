@@ -10,7 +10,7 @@ namespace BalanceCoinAPI.Controllers
     {
         private readonly ICategoryService _categoryService;
 
-
+            
         public CategoryController(ICategoryService categoryService)
         {
             _categoryService = categoryService;
@@ -29,7 +29,7 @@ namespace BalanceCoinAPI.Controllers
             var category = await _categoryService.GetCategoryByIdAsync(id);
             if (category == null)
                 return NotFound();
-            return Ok(category);
+            return  (category);
         }
 
         [HttpPost]
