@@ -1,6 +1,5 @@
 using BalanceCoinAPI.Application.Services;
 using BalanceCoinAPI.Infrastructure.DAL;
-using BalanceCoinAPI.Services;
 using Microsoft.EntityFrameworkCore;
 using System;
 
@@ -17,6 +16,7 @@ builder.Services.AddDbContext<ApplicationDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<ICategoryService, CategoryService>();//Regiester service in Program.cs
+builder.Services.AddScoped<IIncomeService, IncomeService>();
 
 
 

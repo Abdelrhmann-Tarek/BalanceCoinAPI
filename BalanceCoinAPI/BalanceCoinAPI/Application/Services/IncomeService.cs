@@ -53,7 +53,7 @@ namespace BalanceCoinAPI.Application.Services
                                 }).ToList();*/
 
         }
-        public async Task<IncomeDTO> GetIncomeByIdAsync(int id)
+        public async Task<IncomeDTO?> GetIncomeByIdAsync(int id)
         {
             var income = await _context.Incomes.FindAsync(id);
 
@@ -84,6 +84,39 @@ namespace BalanceCoinAPI.Application.Services
             })
 
                .ToListAsync();
+
+        }
+        public async Task<IncomeDTO?> UpdateIncomeAsync(int id, IncomeDTO incomeDto)
+        {
+            var income = await _context.Incomes.FindAsync(id);
+            if (income == null) return null;
+            income.Title = incomeDto.Title;
+            income.Date=incomeDto.Date;
+            income.CategoryId=incomeDto.CategoryId;
+            income.Amount=incomeDto.Amount;
+            await _context.SaveChangesAsync();
+            return new IncomeDTO
+            {
+                Id = income.Id,
+                Title = income.Title,
+                Amount = income.Amount,
+                CategoryId = income.CategoryId,
+                Date = income.Date
+            };
+
+
+
+
+
+        }
+        public async Task<bool> DeleteIncomeAsync(int id)
+        {
+            var income = await _context.Incomes.FindAsync(id);
+            if(income==null)return false;
+            _context.Incomes.Remove(income);
+            await _context.SaveChangesAsync();
+            return true;
+
 
         }
 
