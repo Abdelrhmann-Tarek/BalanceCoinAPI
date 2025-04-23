@@ -61,12 +61,30 @@ namespace BalanceCoinAPI.Application.Services
 
             return new IncomeDTO
             {
+                Id = income.Id,
                 Title = income.Title,
                 Amount = income.Amount,
                 CategoryId = income.CategoryId,
                 Date = income.Date
 
             };
+
+        }
+
+        public async Task<List<IncomeDTO>> GetIncomesByCategoryAsync(int categoryId)
+        {
+            var income = await _context.Incomes.Where(i => i.CategoryId == categoryId).ToListAsync();
+            return await _context.Incomes.Select(i => new IncomeDTO
+            {
+                Id = i.Id,
+                Title = i.Title,
+                Amount = i.Amount,
+                CategoryId = i.CategoryId,
+                Date = i.Date
+            })
+
+               .ToListAsync();
+
         }
 
     }
