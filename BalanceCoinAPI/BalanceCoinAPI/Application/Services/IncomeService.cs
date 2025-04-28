@@ -26,8 +26,14 @@ namespace BalanceCoinAPI.Application.Services
             };
             _context.Incomes.Add(income);
             await _context.SaveChangesAsync();
-            incomeDto.Id = income.Id;
-            return incomeDto;
+            return new IncomeDTO
+            {
+                Id = income.Id,                  //  generated after SaveChangesAsync()
+                Title = income.Title,
+                Amount = income.Amount,
+                CategoryId = income.CategoryId,
+                Date = income.Date
+            };
         }
         public async Task<List<IncomeDTO>> GetAllIncomesAsync()           //Retrieve a list of all expenses/incomes.
         {
