@@ -36,7 +36,7 @@ namespace BalanceCoinAPI.Controllers
         public async Task<ActionResult<IncomeDTO>> Create(IncomeDTO incomeDto)
         {
             var newIncome = await _incomeService.CreateIncomeAsync(incomeDto);
-            return CreatedAtAction(nameof(GetById), new { id = newIncome.Id },newIncome);
+            return CreatedAtAction(nameof(GetById), new { id = newIncome.Id }, newIncome);
         }
 
         [HttpPut("{id}")]

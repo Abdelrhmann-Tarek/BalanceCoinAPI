@@ -19,6 +19,7 @@ namespace BalanceCoinAPI.Application.Services
         {
             var income = new Income
             {
+               
                 Title= incomeDto.Title,
                 Amount = incomeDto.Amount,
                 CategoryId = incomeDto.CategoryId,
@@ -26,6 +27,7 @@ namespace BalanceCoinAPI.Application.Services
             };
             _context.Incomes.Add(income);
             await _context.SaveChangesAsync();
+          
             return new IncomeDTO
             {
                 Id = income.Id,                  //  generated after SaveChangesAsync()
@@ -38,7 +40,7 @@ namespace BalanceCoinAPI.Application.Services
         public async Task<List<IncomeDTO>> GetAllIncomesAsync()           //Retrieve a list of all expenses/incomes.
         {
             return await _context.Incomes.Select(i=>new IncomeDTO { 
-                
+                Id = i.Id,
                 Title = i.Title, 
                 Amount = i.Amount,
                 CategoryId=i.CategoryId,
