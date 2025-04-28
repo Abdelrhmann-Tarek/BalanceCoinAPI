@@ -15,6 +15,7 @@ namespace BalanceCoinAPI.Application.Services
         {
             _context = context;
         }
+
         public async Task<IncomeDTO> CreateIncomeAsync(IncomeDTO incomeDto)
         {
             var income = new Income
