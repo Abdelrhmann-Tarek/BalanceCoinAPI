@@ -11,7 +11,7 @@ namespace BalanceCoinAPI.API.Controllers
         private readonly IExpenseService _expenseService;
         public ExpenseController(IExpenseService expenseService)
         {
-            expenseService = _expenseService;
+            _expenseService = expenseService;
         }
         [HttpGet]
         public async Task<ActionResult<ExpenseDTO>> GetAll()
