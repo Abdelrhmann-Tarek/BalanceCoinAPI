@@ -27,6 +27,40 @@ namespace BalanceCoinAPI.API.Controllers
             if (expense == null) return NotFound();
             return Ok(expense);
         }
+        [HttpGet("category/{categoryId}")]
+        public async Task<ActionResult<ExpenseDTO>> GetByCategory(int categoryId)
+        {
+            var expense = await _expenseService.GetExpenseByCategoryAsync(categoryId);
+            return Ok(expense);
+        }
+        [HttpPost]
+        public async Task<ActionResult<ExpenseDTO>> Create(ExpenseDTO ExpenseDto)
+        {
+            var expense = await _expenseService.CreateExpenseAsync(ExpenseDto);
+            return CreatedAtAction(nameof(GetById), new { id = expense.Id }, expense);
+        }
+        [HttpPut("{id}")]
+        public async Task<ActionResult<ExpenseDTO>> Update(int id, ExpenseDTO expenseDto)
+        {
+            var expense = await _expenseService.UpdateExpenseAsync(id, expenseDto);
+            if (expense == null) return NotFound();
+            return Ok(expense);
+
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var expense = await _expenseService.DeleteExpenseAsync(id);
+            if (!expense)
+                return NotFound();
+
+            return NoContent();
+
+
+        }
+
+
+
 
     }
 }

@@ -32,7 +32,7 @@ namespace BalanceCoinAPI.Controllers
             return Ok(income);
         }
         [HttpGet("category/{categoryId}")]
-        public async Task<IActionResult> GetByCategory(int categoryId)
+        public async Task<ActionResult<IncomeDTO>> GetByCategory(int categoryId)
         {
             var incomes = await _incomeService.GetIncomesByCategoryAsync(categoryId);
             return Ok(incomes);
