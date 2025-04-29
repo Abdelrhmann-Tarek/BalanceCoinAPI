@@ -62,7 +62,7 @@ namespace BalanceCoinAPI.Application.Services
                                 }).ToList();*/
 
         }
-        public async Task<IncomeDTO?> GetIncomeByIdAsync(int id)
+        public async Task<IncomeDTO?> GetIncomeByIdAsync( int id)
         {
             var income = await _context.Incomes.FindAsync(id);
 

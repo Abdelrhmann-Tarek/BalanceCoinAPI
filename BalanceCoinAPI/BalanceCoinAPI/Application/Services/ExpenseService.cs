@@ -15,6 +15,7 @@ namespace BalanceCoinAPI.Application.Services
             _context = context;
         }
         public async Task<ExpenceDTO> CreateExpenseAsync(ExpenceDTO expenseDto)
+        {
             var expense = new Expense
             {
                 Title = expenseDto.Title,
@@ -23,8 +24,48 @@ namespace BalanceCoinAPI.Application.Services
                 Date = expenseDto.Date
 
             };
-        _context
-        
+            _context.Expenses.Add(expense);
+            await _context.SaveChangesAsync();
+            return new ExpenceDTO
+            {
+                Id = expense.Id,
+                Title = expense.Title,
+                Amount = expense.Amount,
+                CategoryId = expense.CategoryId,
+                Date = expense.Date
+            };
+        }
+        public async Task<List<ExpenceDTO>> GetAllExpensesAsync()
+        {
+            return await _context.Expenses.Select(e => new ExpenceDTO
+            {
+
+                Id = e.Id,
+                Amount = e.Amount,
+                Title = e.Title,
+                CategoryId = e.CategoryId,
+                Date = e.Date
+            }).ToListAsync();
+        }
+        public async Task<ExpenceDTO?> GetExpenseByIdAsync(int id)
+        {
+            var expense = await _context.Expenses.FindAsync(id);
+            if (expense == null) return null;
+
+            return new ExpenceDTO
+            {
+
+                Id = expense.Id,
+                Title = expense.Title,
+                Amount = expense.Amount,
+                CategoryId = expense.CategoryId,
+                Date = expense.Date
+
+            };-
+        }
+
+
+
 
     }
 }
