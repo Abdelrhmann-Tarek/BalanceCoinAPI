@@ -4,14 +4,14 @@ namespace BalanceCoinAPI.Application.Services
 {
     public interface IExpenseService
     {
-        Task<ExpenceDTO> CreateExpenseAsync(ExpenceDTO expenseDto);//Create a new expense/income entry
+        Task<ExpenseDTO> CreateExpenseAsync(ExpenseDTO expenseDto);//Create a new expense/income entry
 
-        Task<List<ExpenceDTO>> GetAllExpensesAsync();//Retrieve a list of all expenses/incomes.
+        Task<List<ExpenseDTO>> GetAllExpensesAsync();//Retrieve a list of all expenses/incomes.
 
-        Task<ExpenceDTO?> GetExpenseByIdAsync(int id); //Retrieve details of a specific expense/income by ID.
-        Task<List<ExpenceDTO>> GetExpenseByCategoryAsync(int categoryId); //Filter expenses/income by category
+        Task<ExpenseDTO?> GetExpenseByIdAsync(int id); //Retrieve details of a specific expense/income by ID.
+        Task<List<ExpenseDTO>> GetExpenseByCategoryAsync(int categoryId); //Filter expenses/income by category
 
-        Task<ExpenceDTO?> UpdateExpenseAsync(int id,ExpenceDTO expenseDto);//Update an existing expense/income entry.
+        Task<ExpenseDTO?> UpdateExpenseAsync(int id,ExpenseDTO expenseDto);//Update an existing expense/income entry.
 
         Task<bool> DeleteExpenseAsync(int id);//Delete an expense/income entry.
     }

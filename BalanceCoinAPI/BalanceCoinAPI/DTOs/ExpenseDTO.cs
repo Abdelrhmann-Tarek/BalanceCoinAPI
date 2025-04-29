@@ -2,7 +2,7 @@
 
 namespace BalanceCoinAPI.DTOs
 {
-    public class ExpenceDTO
+    public class ExpenseDTO
     {
         [JsonIgnore] // hide the Id property in Swagger
         public int Id { get; set; }
