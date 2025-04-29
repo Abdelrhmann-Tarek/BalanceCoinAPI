@@ -11,7 +11,7 @@ namespace BalanceCoinAPI.Application.Services
         Task<ExpenceDTO?> GetExpenseByIdAsync(int id); //Retrieve details of a specific expense/income by ID.
         Task<List<ExpenceDTO>> GetExpenseByCategoryAsync(int categoryId); //Filter expenses/income by category
 
-        Task<ExpenceDTO?> UpdateExpenseAsync(int id,ExpenceDTO incomeDto);//Update an existing expense/income entry.
+        Task<ExpenceDTO?> UpdateExpenseAsync(int id,ExpenceDTO expenseDto);//Update an existing expense/income entry.
 
         Task<bool> DeleteExpenseAsync(int id);//Delete an expense/income entry.
     }

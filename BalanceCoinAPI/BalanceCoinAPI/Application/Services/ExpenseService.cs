@@ -65,7 +65,7 @@ namespace BalanceCoinAPI.Application.Services
         }
         public async Task<List<ExpenceDTO>> GetExpenseByCategoryAsync(int categoryId)
         {
-            var encome = await _context.Expenses.Where(i => i.CategoryId == categoryId).ToListAsync();
+            var expence = await _context.Expenses.Where(i => i.CategoryId == categoryId).ToListAsync();
            
             return await _context.Expenses.Select(e => new ExpenceDTO
             {
@@ -78,7 +78,37 @@ namespace BalanceCoinAPI.Application.Services
 
             }).ToListAsync();
         }
-        
+        public async Task<ExpenceDTO?> UpdateExpenseAsync(int id, ExpenceDTO expenseDto)
+        {
+            var expense = await _context.Expenses.FindAsync(id);
+            if (expense == null) return null;
+            expense.Title = expenseDto.Title;
+            expense.Amount = expenseDto.Amount;
+            expense.CategoryId = expenseDto.CategoryId;
+            expense.Date = expenseDto.Date;
+            await _context.SaveChangesAsync();
+            return new ExpenceDTO
+            {
+
+                Id = expense.Id,
+                Title = expense.Title,
+                Amount = expense.Amount,
+                CategoryId = expense.CategoryId,
+                Date = expense.Date
+
+            };
+
+        }
+
+        public async Task<bool> DeleteExpenseAsync(int id)
+        {
+            var expense = await _context.Expenses.FindAsync(id);
+            if (expense == null) return false;
+            _context.Expenses.Remove(expense);
+            await _context.SaveChangesAsync();
+            return true;
+
+        }
 
 
 
