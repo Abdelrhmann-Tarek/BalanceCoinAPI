@@ -30,7 +30,7 @@ namespace BalanceCoinAPI.API.Controllers
         [HttpGet("category/{categoryId}")]
         public async Task<ActionResult<ExpenseDTO>> GetByCategory(int categoryId)
         {
-            var expense = await _expenseService.GetExpenseByCategoryAsync(categoryId);
+            var expense = await _expenseService.GetExpenseByCategoryIdAsync(categoryId);
             return Ok(expense);
         }
         [HttpPost]

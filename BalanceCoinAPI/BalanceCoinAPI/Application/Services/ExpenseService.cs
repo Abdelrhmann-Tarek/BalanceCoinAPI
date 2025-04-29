@@ -63,7 +63,7 @@ namespace BalanceCoinAPI.Application.Services
 
             };
         }
-        public async Task<List<ExpenseDTO>> GetExpenseByCategoryAsync(int categoryId)
+        public async Task<List<ExpenseDTO>> GetExpenseByCategoryIdAsync(int categoryId)
         {
             var expence = await _context.Expenses.Where(i => i.CategoryId == categoryId).ToListAsync();
            

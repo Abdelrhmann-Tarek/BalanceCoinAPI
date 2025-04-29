@@ -18,6 +18,8 @@ builder.Services.AddDbContext<ApplicationDBContext>(options =>
 builder.Services.AddScoped<ICategoryService, CategoryService>();//Dependency injection
 builder.Services.AddScoped<IIncomeService, IncomeService>();
 builder.Services.AddScoped<IExpenseService, ExpenseService>();
+builder.Services.AddScoped<IBalanceService, BalanceService>();
+
 
 
 
