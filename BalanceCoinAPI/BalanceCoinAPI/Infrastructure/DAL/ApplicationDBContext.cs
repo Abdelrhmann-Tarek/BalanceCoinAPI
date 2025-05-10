@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BalanceCoinAPI.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace BalanceCoinAPI.Infrastructure.DAL
 {
@@ -8,7 +9,7 @@ namespace BalanceCoinAPI.Infrastructure.DAL
             
             : base(options) {}
         public DbSet<Income>  Incomes { get; set; }
-        public DbSet<BalanceCoinAPI.Expense> Expenses { get; set; }
+        public DbSet<Expense> Expenses { get; set; }
         public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

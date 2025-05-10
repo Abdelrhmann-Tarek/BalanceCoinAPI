@@ -1,8 +1,11 @@
-﻿using BalanceCoinAPI.Application.Services;
+﻿using BalanceCoinAPI.Application.Interfaces;
 using BalanceCoinAPI.DTOs;
 using BalanceCoinAPI.Infrastructure.DAL;
 using Microsoft.EntityFrameworkCore;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using BalanceCoinAPI.Domain.Entities;
+using Microsoft.Extensions.Logging;
+
 
 
 namespace BalanceCoinAPI.Application.Services
@@ -10,14 +13,17 @@ namespace BalanceCoinAPI.Application.Services
     public class IncomeService : IIncomeService
     {
         private readonly ApplicationDBContext _context;
+        private readonly ILogger<IncomeService> _logger;
 
-        public IncomeService(ApplicationDBContext context)
+        public IncomeService(ApplicationDBContext context, ILogger<IncomeService> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         public async Task<IncomeDTO> CreateIncomeAsync(IncomeDTO incomeDto)
         {
+            _logger.LogInformation("Adding Income:{Title}", incomeDto.Title);
             var income = new Income
             {
                
@@ -28,7 +34,8 @@ namespace BalanceCoinAPI.Application.Services
             };
             _context.Incomes.Add(income);
             await _context.SaveChangesAsync();
-          
+            _logger.LogInformation("Income created with ID: {Id}", income.Id);
+
             return new IncomeDTO
             {
                 Id = income.Id,                  //  generated after SaveChangesAsync()

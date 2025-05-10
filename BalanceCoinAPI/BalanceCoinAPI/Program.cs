@@ -1,5 +1,7 @@
+using BalanceCoinAPI.Application.Interfaces;
 using BalanceCoinAPI.Application.Services;
 using BalanceCoinAPI.Infrastructure.DAL;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using System;
 
@@ -23,6 +25,8 @@ builder.Services.AddScoped<IBalanceService, BalanceService>();
 
 
 
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -31,6 +35,28 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+
+app.UseExceptionHandler(errorApp =>
+{
+    errorApp.Run(async context =>
+    {
+        var logger = context.RequestServices.GetRequiredService<ILogger<Program>>();
+        var error = context.Features.Get<IExceptionHandlerFeature>()?.Error;
+
+        if (error != null)
+        {
+            logger.LogError(error, "Unhandled exception occurred");
+        }
+
+        context.Response.StatusCode = 500;
+        context.Response.ContentType = "text/plain";
+        await context.Response.WriteAsync("An unexpected error occurred.We will fix it..gitg");
+    });
+});
+
+
+
 
 app.UseHttpsRedirection();
 

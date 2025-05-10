@@ -1,8 +1,9 @@
-﻿using BalanceCoinAPI.Application.Services;
+﻿using BalanceCoinAPI.Application.Interfaces;
 using BalanceCoinAPI.DTOs;
 using BalanceCoinAPI.Infrastructure.DAL;
 using Microsoft.EntityFrameworkCore;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using BalanceCoinAPI.Domain.Entities;
 
 namespace BalanceCoinAPI.Application.Services
 {

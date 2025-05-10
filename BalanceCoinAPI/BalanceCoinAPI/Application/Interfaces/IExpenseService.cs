@@ -1,6 +1,6 @@
 ﻿using BalanceCoinAPI.DTOs;
 
-namespace BalanceCoinAPI.Application.Services
+namespace BalanceCoinAPI.Application.Interfaces
 {
     public interface IExpenseService
     {

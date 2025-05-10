@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BalanceCoinAPI
+namespace BalanceCoinAPI.Domain.Entities
 {
     public class Expense
     {
@@ -15,6 +15,8 @@ namespace BalanceCoinAPI
 
 
         // Add other properties based on your design
+        //test
+        //ww
     }
 }
 

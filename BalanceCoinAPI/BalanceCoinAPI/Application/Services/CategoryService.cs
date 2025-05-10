@@ -1,7 +1,8 @@
-﻿using BalanceCoinAPI.Application.Services;
+﻿using BalanceCoinAPI.Application.Interfaces;
 using BalanceCoinAPI.DTOs;
 using BalanceCoinAPI.Infrastructure.DAL;
 using Microsoft.EntityFrameworkCore;
+using BalanceCoinAPI.Domain.Entities;
 
 namespace BalanceCoinAPI.Application.Services
 {
@@ -42,7 +43,8 @@ namespace BalanceCoinAPI.Application.Services
         {
             var category = new Category
             {
-                Name = categoryDto.Name
+                Name = categoryDto.Name,
+                Description = categoryDto.Description
             };
 
             _context.Categories.Add(category);

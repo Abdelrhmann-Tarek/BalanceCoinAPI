@@ -1,4 +1,4 @@
-﻿using BalanceCoinAPI.Application.Services;
+﻿using BalanceCoinAPI.Application.Interfaces;
 using BalanceCoinAPI.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,7 +16,7 @@ namespace BalanceCoinAPI.Controllers
             _categoryService = categoryService;
         }
 
-        [HttpGet]
+        [HttpGet("Browse")]
         public async Task<ActionResult<IEnumerable<CategoryDTO>>> GetAllCategories()
         {
             var categories = await _categoryService.GetAllCategoriesAsync();

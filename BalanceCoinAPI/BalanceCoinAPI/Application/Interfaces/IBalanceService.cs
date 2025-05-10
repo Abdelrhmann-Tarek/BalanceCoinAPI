@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace BalanceCoinAPI.Application.Services
+namespace BalanceCoinAPI.Application.Interfaces
 {
     public interface IBalanceService
     {

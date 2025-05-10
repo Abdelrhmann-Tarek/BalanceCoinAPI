@@ -1,4 +1,5 @@
-﻿using BalanceCoinAPI.Infrastructure.DAL;
+﻿using BalanceCoinAPI.Application.Interfaces;
+using BalanceCoinAPI.Infrastructure.DAL;
 using Microsoft.EntityFrameworkCore;
 
 namespace BalanceCoinAPI.Application.Services

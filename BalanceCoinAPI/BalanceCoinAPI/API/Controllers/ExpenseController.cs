@@ -1,6 +1,6 @@
 ﻿using BalanceCoinAPI.DTOs;
-using BalanceCoinAPI.Application.Services;
 using Microsoft.AspNetCore.Mvc;
+using BalanceCoinAPI.Application.Interfaces;
 
 namespace BalanceCoinAPI.API.Controllers
 {
