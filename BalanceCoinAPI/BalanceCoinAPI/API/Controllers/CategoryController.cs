@@ -1,6 +1,7 @@
 ﻿using BalanceCoinAPI.Application.Interfaces;
 using BalanceCoinAPI.DTOs;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace BalanceCoinAPI.Controllers
 {
@@ -9,17 +10,27 @@ namespace BalanceCoinAPI.Controllers
     public class CategoryController : ControllerBase //adding controllers to handle HTTP requests
     {
         private readonly ICategoryService _categoryService;
+        private readonly ILogger<CategoryController> _logger;
+
 
             
-        public CategoryController(ICategoryService categoryService)
+        public CategoryController(ICategoryService categoryService,ILogger<CategoryController>logger)
         {
             _categoryService = categoryService;
+            _logger = logger;
+
         }
 
         [HttpGet("Browse")]
         public async Task<ActionResult<IEnumerable<CategoryDTO>>> GetAllCategories()
         {
+            _logger.LogInformation("Getting All Categories request");
             var categories = await _categoryService.GetAllCategoriesAsync();
+            if (categories == null)
+            {
+                _logger.LogWarning("No Categorise Found");
+                return NotFound("Ther's No Categories");
+            }
             return Ok(categories);
         }
 
