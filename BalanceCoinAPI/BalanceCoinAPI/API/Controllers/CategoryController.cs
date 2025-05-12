@@ -49,7 +49,7 @@ namespace BalanceCoinAPI.Controllers
 
 
 
-        [HttpPost("{createCategory}")]
+        [HttpPost("createCategory")]
         public async Task<ActionResult<CategoryDTO>> CreateCategory(CategoryDTO categoryDto)
         {
             if (!ModelState.IsValid)
@@ -60,7 +60,7 @@ namespace BalanceCoinAPI.Controllers
             var created = await _categoryService.CreateCategoryAsync(categoryDto);
             if (created == null)
             {
-                _logger.LogError("Failed to create Category : {@CategoryName}",categoryDto.Name);
+                _logger.LogError("Failed to create category: {CategoryName}");
                 return StatusCode(500, "Could not create the category");
             }
 
