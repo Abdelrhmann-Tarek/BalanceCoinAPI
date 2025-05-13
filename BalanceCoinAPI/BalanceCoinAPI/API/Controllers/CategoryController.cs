@@ -10,27 +10,27 @@ namespace BalanceCoinAPI.Controllers
     public class CategoryController : ControllerBase //adding controllers to handle HTTP requests
     {
         private readonly ICategoryService _categoryService;
-        private readonly ILogger<CategoryController> _logger;
+        //private readonly ILogger<CategoryController> _logger;
 
 
             
-        public CategoryController(ICategoryService categoryService,ILogger<CategoryController>logger)
+        public CategoryController(ICategoryService categoryService)//,ILogger<CategoryController>logger
         {
             _categoryService = categoryService;
-            _logger = logger;
+            //_logger = logger;
 
         }
 
         [HttpGet("Browse")]
         public async Task<ActionResult<IEnumerable<CategoryDTO>>> GetAllCategories()
         {
-            _logger.LogInformation("Getting All Categories request");
+           // _logger.LogInformation("Getting All Categories request");
             var categories = await _categoryService.GetAllCategoriesAsync();
-            if (categories == null)
+            /*if (categories == null)
             {
                 _logger.LogWarning("No Categorise Found");
                 return NotFound("Ther's No Categories");
-            }
+            }*/
             return Ok(categories);
         }
 
@@ -52,17 +52,17 @@ namespace BalanceCoinAPI.Controllers
         [HttpPost("createCategory")]
         public async Task<ActionResult<CategoryDTO>> CreateCategory(CategoryDTO categoryDto)
         {
-            if (!ModelState.IsValid)
+            /*if (!ModelState.IsValid)
             {
-                _logger.LogError("Invalid state fo Category :{@Category}",categoryDto.Name);
+                //_logger.LogError("Invalid state fo Category :{@Category}",categoryDto.Name);
                 return BadRequest(ModelState);
-            }
+            }*/
             var created = await _categoryService.CreateCategoryAsync(categoryDto);
-            if (created == null)
+           /* if (created == null)
             {
                 _logger.LogError("Failed to create category: {CategoryName}");
                 return StatusCode(500, "Could not create the category");
-            }
+            }*/
 
             return CreatedAtAction(nameof(GetCategoryById), new { id = created.Id }, created);
         }
