@@ -37,7 +37,7 @@ if (app.Environment.IsDevelopment())
 }
 
 
-app.UseExceptionHandler(errorApp =>
+app.UseExceptionHandler(errorApp =>   //HAndling (without try .. catch )
 {
     errorApp.Run(async context =>
     {
