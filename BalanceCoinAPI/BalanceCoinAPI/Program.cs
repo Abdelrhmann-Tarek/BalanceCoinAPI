@@ -54,6 +54,7 @@ app.UseExceptionHandler(errorApp =>   //HAndling (without try .. catch )
         await context.Response.WriteAsync("An unexpected error occurred.We will fix it..gitg");
     });
 });
+//HAndling (without try .. catch ) onl
 
 
 
