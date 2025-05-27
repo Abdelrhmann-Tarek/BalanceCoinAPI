@@ -26,6 +26,8 @@ namespace BalanceCoinAPI.Infrastructure.DAL
                .WithMany()
                 .HasForeignKey(i => i.CategoryId); // CategoryId has ForeignKey with Category.Id 
 
+                //tst
+
 
         }
 
